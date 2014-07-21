@@ -25,7 +25,9 @@ static void sample_platform_release(struct device *dev)
 
 static struct platform_device sample_platform_device = {
     .name   = "simple_platform_device_name",
-    .resource   = platform_resource,
+
+	.id		= 0,
+	.resource   = platform_resource,
     .num_resources  = ARRAY_SIZE(platform_resource),
     .dev.platform_data = "test data",
     .dev.release    = sample_platform_release,

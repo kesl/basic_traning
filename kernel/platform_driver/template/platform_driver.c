@@ -6,14 +6,18 @@
 #include <linux/of_irq.h>
 
 
-static __devinit int simple_platform_probe(struct platform_device *pdev)
+static __init int simple_platform_probe(struct platform_device *pdev)
 {
+
+    printk("platform device name : %s  \n",pdev->name);
+	printk("platform device data: %s \n",pdev->dev.platform_data);
+
 
 
     return 0;
 }
 
-static int __devexit simple_platform_plat_remove(struct platform_device *pdev)
+static int __exit simple_platform_plat_remove(struct platform_device *pdev)
 {
 _entry:
     return 0;
@@ -42,6 +46,17 @@ static const struct dev_pm_ops simple_platform_pm = {
 #endif
 
 static struct platform_driver simple_platform_plat_driver = {
+
+
+    .probe = simple_platform_probe,
+	.remove = simple_platform_plat_remove,
+		.driver ={
+		.owner = THIS_MODULE,
+		.name = "simple_platform_device_name",
+		},
+
+
+
 
 
 };

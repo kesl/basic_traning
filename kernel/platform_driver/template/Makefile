@@ -1,4 +1,4 @@
-obj-m+= platform_device.o
+obj-m+= platform_driver.o
 obj-m+= 
 
 KERNELDIR ?= /lib/modules/$(shell uname -r)/build
